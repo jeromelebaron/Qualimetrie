@@ -69,6 +69,12 @@
 				<activeByDefault>true</activeByDefault>
 			</activation>
 		</profile>
+		<profile>
+			<id>maison</id>
+			<properties>
+				<env>maison</env>
+			</properties>
+		</profile>
 	</profiles>
 
 	<build>
