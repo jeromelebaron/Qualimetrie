@@ -13,6 +13,11 @@
 	<dependencies>
 		<dependency>
 			<groupId>fr.afcepf.atod26</groupId>
+			<artifactId>Qualimetrie-Commun</artifactId>
+			<version>${parent.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>fr.afcepf.atod26</groupId>
 			<artifactId>Qualimetrie-InterfaceData</artifactId>
 			<version>${parent.version}</version>
 		</dependency>

@@ -28,14 +28,6 @@ public class SuperHero {
      */
     private String superNom;
     /**
-     * {@link Costume}.
-     */
-    private Costume costume;
-    /**
-     * Date de naissance.
-     */
-    private Date dateDeNaissance;
-    /**
      * Liste de {@link Pouvoir}.
      */
     private List<Pouvoir> lesPouvoirs;
@@ -57,20 +49,13 @@ public class SuperHero {
      * @param paramPrenom {@link #prenom}
      * @param paramSuperNom {@link #superNom}
      * @param paramCostume {@link #costume}
-     * @param paramDateDeNaissance {@link #dateDeNaissance}
-     * @param paramLesPouvoirs {@link #lesPouvoirs}
      */
     public SuperHero(final String paramNom, final String paramPrenom,
-            final String paramSuperNom, final Costume paramCostume,
-            final Date paramDateDeNaissance,
-            final List<Pouvoir> paramLesPouvoirs) {
+            final String paramSuperNom, final Costume paramCostume) {
         super();
         nom = paramNom;
         prenom = paramPrenom;
         superNom = paramSuperNom;
-        costume = paramCostume;
-        dateDeNaissance = paramDateDeNaissance;
-        lesPouvoirs = paramLesPouvoirs;
     }
 
     /**
@@ -87,8 +72,7 @@ public class SuperHero {
             final String paramPrenom, final String paramSuperNom,
             final Costume paramCostume, final Date paramDateDeNaissance,
             final List<Pouvoir> paramLesPouvoirs) {
-        this(paramNom, paramPrenom, paramSuperNom, paramCostume,
-                paramDateDeNaissance, paramLesPouvoirs);
+        this(paramNom, paramPrenom, paramSuperNom, paramCostume);
         idSuperHero = paramIdSuperHero;
     }
 
@@ -154,39 +138,6 @@ public class SuperHero {
      */
     public void setSuperNom(final String paramSuperNom) {
         superNom = paramSuperNom;
-    }
-
-    /**
-     * Accesseur en lecture du champ <code>costume</code>.
-     * @return le champ <code>costume</code>.
-     */
-    public Costume getCostume() {
-        return costume;
-    }
-
-    /**
-     * Accesseur en écriture du champ <code>costume</code>.
-     * @param paramCostume la valeur à écrire dans <code>costume</code>.
-     */
-    public void setCostume(final Costume paramCostume) {
-        costume = paramCostume;
-    }
-
-    /**
-     * Accesseur en lecture du champ <code>dateDeNaissance</code>.
-     * @return le champ <code>dateDeNaissance</code>.
-     */
-    public Date getDateDeNaissance() {
-        return dateDeNaissance;
-    }
-
-    /**
-     * Accesseur en écriture du champ <code>dateDeNaissance</code>.
-     * @param paramDateDeNaissance la valeur à écrire dans
-     *            <code>dateDeNaissance</code>.
-     */
-    public void setDateDeNaissance(final Date paramDateDeNaissance) {
-        dateDeNaissance = paramDateDeNaissance;
     }
 
     /**

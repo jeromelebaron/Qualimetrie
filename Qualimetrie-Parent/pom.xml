@@ -18,6 +18,10 @@
 		<dependencies>
 			<dependency>
 				<groupId>fr.afcepf.atod26</groupId>
+				<artifactId>Qualimetrie-Commun</artifactId>
+			</dependency>
+			<dependency>
+				<groupId>fr.afcepf.atod26</groupId>
 				<artifactId>Qualimetrie-Entity</artifactId>
 			</dependency>
 			<dependency>
