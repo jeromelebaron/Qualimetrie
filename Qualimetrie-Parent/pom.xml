@@ -17,10 +17,32 @@
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
+				<groupId>fr.afcepf.atod26</groupId>
+				<artifactId>Qualimetrie-Commun</artifactId>
+			</dependency>
+			<dependency>
+				<groupId>fr.afcepf.atod26</groupId>
+				<artifactId>Qualimetrie-Entity</artifactId>
+			</dependency>
+			<dependency>
+				<groupId>fr.afcepf.atod26</groupId>
+				<artifactId>Qualimetrie-InterfaceData</artifactId>
+			</dependency>
+			<dependency>
+				<groupId>fr.afcepf.atod26</groupId>
+				<artifactId>Qualimetrie-InterfaceBusiness</artifactId>
+			</dependency>
+			<dependency>
 				<groupId>log4j</groupId>
 				<artifactId>log4j</artifactId>
 				<version>${log4j.version}</version>
 				<scope>compile</scope>
+			</dependency>
+			<dependency>
+				<groupId>javax</groupId>
+				<artifactId>javaee-api</artifactId>
+				<version>${javaee.version}</version>
+				<scope>provided</scope>
 			</dependency>
 			<dependency>
 				<groupId>junit</groupId>
@@ -28,10 +50,37 @@
 				<version>${junit.version}</version>
 				<scope>test</scope>
 			</dependency>
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>5.1.27</version>
+				<scope>compile</scope>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
+	<profiles>
+		<profile>
+			<id>afcepf</id>
+			<properties>
+				<env>afcepf</env>
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+	</profiles>
+
 	<build>
+		<filters>
+			<filter>../src/filters/filter-${env}.properties</filter>
+		</filters>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
