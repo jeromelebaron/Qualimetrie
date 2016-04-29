@@ -6,6 +6,8 @@ package fr.afcepf.atod26.qualimetrie.business.impl;
 import java.util.List;
 
 import javax.ejb.EJB;
+import javax.ejb.Remote;
+import javax.ejb.Stateless;
 
 import fr.afcepf.atod26.qualimetrie.business.IBusinessSuperHero;
 import fr.afcepf.atod26.qualimetrie.data.IDaoSuperHero;
@@ -17,6 +19,8 @@ import fr.afcepf.atod26.qualimetrie.entity.SuperHero;
  * @author $LastChangedBy$
  * @version $Revision$ $Date$
  */
+@Remote(IBusinessSuperHero.class)
+@Stateless
 public class BusinessSuperHeroImpl implements IBusinessSuperHero {
 
     /**

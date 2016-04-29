@@ -15,7 +15,7 @@ import javax.ejb.Stateless;
 
 import org.apache.log4j.Logger;
 
-import fr.afcepf.atod26.qualimetrie.commun.ICommun;
+import fr.afcepf.atod26.qualimetrie.commun.ParametreRequete;
 import fr.afcepf.atod26.qualimetrie.data.IDaoSuperHero;
 import fr.afcepf.atod26.qualimetrie.data.utils.DataSourceSuperHero;
 import fr.afcepf.atod26.qualimetrie.entity.SuperHero;
@@ -33,8 +33,8 @@ public class DaoSuperHeroImpl implements IDaoSuperHero {
     /**
      * Pour insérer un {@link SuperHero} dans la bdd.
      */
-    private static final String REQUETE_INSERT_SUPER_HERO =
-            "INSERT INTO super_hero.super_hero (nom, prenom, super_nom) VALUES (?, ?, ?)";
+    private static final String REQUETE_INSERT_SUPER_HERO = "INSERT INTO super_hero.super_hero "
+            + "(nom, prenom, super_nom) VALUES (?, ?, ?)";
     /**
      * Pour récupérer tous les {@link SuperHero}.
      */
@@ -51,7 +51,7 @@ public class DaoSuperHeroImpl implements IDaoSuperHero {
     /**
      * Pour faire du log.
      */
-    private Logger logger = Logger.getLogger(DataSourceSuperHero.class);
+    private Logger logger = Logger.getLogger(getClass());
 
     /**
      * {@inheritDoc}
@@ -65,10 +65,14 @@ public class DaoSuperHeroImpl implements IDaoSuperHero {
             connection.setAutoCommit(false);
             preparedStatement = connection.prepareStatement(REQUETE_INSERT_SUPER_HERO,
                     PreparedStatement.RETURN_GENERATED_KEYS);
-            preparedStatement.setString(ICommun.PREMIER_PARAMETRE_REQUETE, paramSuperHero.getNom());
-            preparedStatement.setString(ICommun.SECOND_PARAMETRE_REQUETE,
+            preparedStatement.setString(
+                    ParametreRequete.PREMIER_PARAMETRE_REQUETE.getNumeroParametre(),
+                    paramSuperHero.getNom());
+            preparedStatement.setString(
+                    ParametreRequete.SECOND_PARAMETRE_REQUETE.getNumeroParametre(),
                     paramSuperHero.getPrenom());
-            preparedStatement.setString(ICommun.TROISIEME_PARAMETRE_REQUETE,
+            preparedStatement.setString(
+                    ParametreRequete.TROISIEME_PARAMETRE_REQUETE.getNumeroParametre(),
                     paramSuperHero.getSuperNom());
             final int nbLignesModifiees = preparedStatement.executeUpdate();
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
@@ -80,13 +84,7 @@ public class DaoSuperHeroImpl implements IDaoSuperHero {
             logger.error("Erreur avec la base de données");
             logger.error(e);
         } finally {
-            try {
-                preparedStatement.close();
-                connection.close();
-            } catch (SQLException e) {
-                logger.error("Erreur dans les fermetures de connexions");
-                logger.error(e);
-            }
+            fermerElements(preparedStatement);
         }
         return paramSuperHero;
     }
@@ -113,15 +111,23 @@ public class DaoSuperHeroImpl implements IDaoSuperHero {
             logger.error("Erreur avec la base de données");
             logger.error(e);
         } finally {
-            try {
-                preparedStatement.close();
-                connection.close();
-            } catch (SQLException e) {
-                logger.error("Erreur dans les fermetures de connexions");
-                logger.error(e);
-            }
+            fermerElements(preparedStatement);
         }
         return lesSuperHeroTrouves;
+    }
+
+    /**
+     * Pour fermer la requete et la connexion à la bdd.
+     * @param preparedStatement la requete à fermer.
+     */
+    private void fermerElements(final PreparedStatement preparedStatement) {
+        try {
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            logger.error("Erreur dans les fermetures de connexions");
+            logger.error(e);
+        }
     }
 
     /**

@@ -61,7 +61,7 @@ public class DaoSuperHeroImplTest {
      */
     @Test
     public void testRechercherSuperHeroParNom() {
-        List<SuperHero> lesSuperHero = daoSuperHero.rechercherSuperHeroParNom("");
+        List<SuperHero> lesSuperHero = daoSuperHero.rechercherSuperHeroParNom("SuperMan");
 
         int tailleListeGeneree = lesSuperHero.size();
         int tailleAttendue = 1;

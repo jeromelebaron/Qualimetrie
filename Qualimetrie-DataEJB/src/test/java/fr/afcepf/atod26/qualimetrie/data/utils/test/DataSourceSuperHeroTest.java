@@ -26,7 +26,7 @@ public class DataSourceSuperHeroTest {
     /**
      * Pour faire du log.
      */
-    private Logger logger = Logger.getLogger(DataSourceSuperHeroTest.class);
+    private Logger logger = Logger.getLogger(getClass());
 
     /**
      * La classe à tester.
