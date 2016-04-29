@@ -13,8 +13,12 @@
 
 	<modules>
 		<module>Qualimetrie-Parent</module>
-		<module>Qualimetrie-Premier</module>
-		<module>Qualimetrie-Propre</module>
+		<module>Qualimetrie-Entity</module>
+		<module>Qualimetrie-InterfaceData</module>
+		<module>Qualimetrie-DataEJB</module>
+		<module>Qualimetrie-InterfaceBusiness</module>
+		<module>Qualimetrie-BusinessEJB</module>
+		<module>Qualimetrie-Front</module>
 	</modules>
 
 </project>

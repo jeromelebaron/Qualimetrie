@@ -17,6 +17,18 @@
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
+				<groupId>fr.afcepf.atod26</groupId>
+				<artifactId>Qualimetrie-Entity</artifactId>
+			</dependency>
+			<dependency>
+				<groupId>fr.afcepf.atod26</groupId>
+				<artifactId>Qualimetrie-InterfaceData</artifactId>
+			</dependency>
+			<dependency>
+				<groupId>fr.afcepf.atod26</groupId>
+				<artifactId>Qualimetrie-InterfaceBusiness</artifactId>
+			</dependency>
+			<dependency>
 				<groupId>log4j</groupId>
 				<artifactId>log4j</artifactId>
 				<version>${log4j.version}</version>
