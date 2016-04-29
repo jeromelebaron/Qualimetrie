@@ -1,6 +1,5 @@
 package fr.afcepf.atod26.qualimetrie.entity;
 
-
 import java.util.Date;
 import java.util.List;
 
@@ -40,6 +39,10 @@ public class SuperHero {
      * Liste de {@link Pouvoir}.
      */
     private List<Pouvoir> lesPouvoirs;
+    /**
+     * Tous les {@link Costume} du héros.
+     */
+    private List<Costume> lesCostumes;
 
     /**
      * Constructeur vide.
@@ -200,6 +203,22 @@ public class SuperHero {
      */
     public void setLesPouvoirs(final List<Pouvoir> paramLesPouvoirs) {
         lesPouvoirs = paramLesPouvoirs;
+    }
+
+    /**
+     * Accesseur en lecture du champ <code>lesCostumes</code>.
+     * @return le champ <code>lesCostumes</code>.
+     */
+    public List<Costume> getLesCostumes() {
+        return lesCostumes;
+    }
+
+    /**
+     * Accesseur en écriture du champ <code>lesCostumes</code>.
+     * @param paramLesCostumes la valeur à écrire dans <code>lesCostumes</code>.
+     */
+    public void setLesCostumes(List<Costume> paramLesCostumes) {
+        lesCostumes = paramLesCostumes;
     }
 
 }

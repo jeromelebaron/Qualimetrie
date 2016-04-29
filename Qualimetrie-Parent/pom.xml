@@ -35,6 +35,12 @@
 				<scope>compile</scope>
 			</dependency>
 			<dependency>
+				<groupId>javax</groupId>
+				<artifactId>javaee-api</artifactId>
+				<version>${javaee.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
 				<groupId>junit</groupId>
 				<artifactId>junit</artifactId>
 				<version>${junit.version}</version>
