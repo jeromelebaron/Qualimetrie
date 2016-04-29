@@ -1,6 +1,5 @@
 package fr.afcepf.atod26.qualimetrie.entity;
 
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -48,10 +47,8 @@ public class SuperHero {
      * @param paramNom {@link #nom}
      * @param paramPrenom {@link #prenom}
      * @param paramSuperNom {@link #superNom}
-     * @param paramCostume {@link #costume}
      */
-    public SuperHero(final String paramNom, final String paramPrenom,
-            final String paramSuperNom, final Costume paramCostume) {
+    public SuperHero(final String paramNom, final String paramPrenom, final String paramSuperNom) {
         super();
         nom = paramNom;
         prenom = paramPrenom;
@@ -64,15 +61,10 @@ public class SuperHero {
      * @param paramNom {@link #nom}
      * @param paramPrenom {@link #prenom}
      * @param paramSuperNom {@link #superNom}
-     * @param paramCostume {@link #costume}
-     * @param paramDateDeNaissance {@link #dateDeNaissance}
-     * @param paramLesPouvoirs {@link #lesPouvoirs}
      */
-    public SuperHero(final int paramIdSuperHero, final String paramNom,
-            final String paramPrenom, final String paramSuperNom,
-            final Costume paramCostume, final Date paramDateDeNaissance,
-            final List<Pouvoir> paramLesPouvoirs) {
-        this(paramNom, paramPrenom, paramSuperNom, paramCostume);
+    public SuperHero(final int paramIdSuperHero, final String paramNom, final String paramPrenom,
+            final String paramSuperNom) {
+        this(paramNom, paramPrenom, paramSuperNom);
         idSuperHero = paramIdSuperHero;
     }
 

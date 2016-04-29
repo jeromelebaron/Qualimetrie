@@ -65,9 +65,10 @@ public class DaoSuperHeroImpl implements IDaoSuperHero {
             connection.setAutoCommit(false);
             preparedStatement = connection.prepareStatement(REQUETE_INSERT_SUPER_HERO,
                     PreparedStatement.RETURN_GENERATED_KEYS);
-            preparedStatement.setString(ICommun.premierParametreRequete, paramSuperHero.getNom());
-            preparedStatement.setString(ICommun.secondParametreRequete, paramSuperHero.getPrenom());
-            preparedStatement.setString(ICommun.troisiemeParametreRequete,
+            preparedStatement.setString(ICommun.PREMIER_PARAMETRE_REQUETE, paramSuperHero.getNom());
+            preparedStatement.setString(ICommun.SECOND_PARAMETRE_REQUETE,
+                    paramSuperHero.getPrenom());
+            preparedStatement.setString(ICommun.TROISIEME_PARAMETRE_REQUETE,
                     paramSuperHero.getSuperNom());
             final int nbLignesModifiees = preparedStatement.executeUpdate();
             ResultSet resultSet = preparedStatement.getGeneratedKeys();

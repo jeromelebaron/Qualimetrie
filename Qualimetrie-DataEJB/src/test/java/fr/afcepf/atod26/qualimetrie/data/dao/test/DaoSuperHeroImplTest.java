@@ -1,4 +1,4 @@
-/*
+/**
  * Créé le 29 avr. 2016 par Jérome LE BARON
  */
 package fr.afcepf.atod26.qualimetrie.data.dao.test;
@@ -49,7 +49,7 @@ public class DaoSuperHeroImplTest {
     @Ignore
     @Test
     public void testAjouterSuperHero() {
-        SuperHero superHero = new SuperHero("Kent", "Clark", "SuperMan", null);
+        SuperHero superHero = new SuperHero("Kent", "Clark", "SuperMan");
 
         int idGenere = daoSuperHero.ajouterSuperHero(superHero).getIdSuperHero();
         int idAttendu = 1;

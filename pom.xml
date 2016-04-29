@@ -13,6 +13,7 @@
 
 	<modules>
 		<module>Qualimetrie-Parent</module>
+		<module>Qualimetrie-Commun</module>
 		<module>Qualimetrie-Entity</module>
 		<module>Qualimetrie-InterfaceData</module>
 		<module>Qualimetrie-DataEJB</module>
