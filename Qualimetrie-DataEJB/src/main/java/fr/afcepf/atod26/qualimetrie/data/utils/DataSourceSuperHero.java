@@ -5,6 +5,7 @@ package fr.afcepf.atod26.qualimetrie.data.utils;
 
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.SQLFeatureNotSupportedException;
 import java.util.ResourceBundle;
@@ -96,7 +97,8 @@ public class DataSourceSuperHero implements DataSource {
 
     @Override
     public Connection getConnection() throws SQLException {
-        return null;
+        LOGGER.info("Récupération de la connexion");
+        return DriverManager.getConnection(URL, LOGIN, MOT_DE_PASSE);
     }
 
     @Override
