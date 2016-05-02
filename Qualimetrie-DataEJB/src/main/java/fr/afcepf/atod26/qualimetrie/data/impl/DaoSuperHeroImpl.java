@@ -20,6 +20,7 @@ import fr.afcepf.atod26.qualimetrie.data.IDaoSuperHero;
 import fr.afcepf.atod26.qualimetrie.data.utils.DataSourceSuperHero;
 import fr.afcepf.atod26.qualimetrie.entity.SuperHero;
 import fr.afcepf.atod26.qualimetrie.exception.SuperHeroException;
+import fr.afcepf.atod26.qualimetrie.exception.SuperHeroException.SuperErrorCode;
 
 /**
  * L'implémentation du dao du {@link SuperHero}.
@@ -84,6 +85,7 @@ public class DaoSuperHeroImpl implements IDaoSuperHero {
         } catch (SQLException e) {
             logger.error("Erreur avec la base de données");
             logger.error(e);
+            throw new SuperHeroException(e.getMessage(), SuperErrorCode.ERREUR_AJOUT_SUPER_HEROS);
         } finally {
             fermerElements(preparedStatement);
         }

@@ -25,3 +25,8 @@ Les SFD (usecase) fournissent les différents cas à tester :
 - cas d'échec --> 1 ou 2 significatif
 
 La couverture idéale doit être de 80%.
+
+##Procédure de TDD
+
+1. Ecriture des tests
+2. Vérification de non succès
