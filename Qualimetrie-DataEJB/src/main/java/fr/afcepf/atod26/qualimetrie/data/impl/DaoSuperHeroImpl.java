@@ -44,6 +44,22 @@ public class DaoSuperHeroImpl implements IDaoSuperHero {
     private static final String REQUETE_GET_ALL_SUPER_HERO = "SELECT * "
             + "FROM super_hero.super_hero s WHERE s.super_nom LIKE ?";
     /**
+     * La colonne portant l'id.
+     */
+    private static final String COLONE_ID_SUPER_HERO = "id_super_hero";
+    /**
+     * La colonne portant le nom.
+     */
+    private static final String COLONE_NOM_SUPER_HERO = "nom";
+    /**
+     * La colonne portant le prénom.
+     */
+    private static final String COLONE_PRENOM_SUPER_HERO = "prenom";
+    /**
+     * La colonne portant le super nom.
+     */
+    private static final String COLONE_SUPER_NOM_SUPER_HERO = "super_nom";
+    /**
      * Pour récupérer les éléments nécessaires aux requetes.
      */
     private final DataSourceSuperHero dataSourceSuperHero = new DataSourceSuperHero();
@@ -98,7 +114,7 @@ public class DaoSuperHeroImpl implements IDaoSuperHero {
      * {@inheritDoc}
      */
     @Override
-    public List<SuperHero> rechercherSuperHeroParSuperNom(final String paramNom) {
+    public List<SuperHero> rechercherSuperHeroParSuperNom(final String paramSuperNom) {
         logger.info("Méthode rechercherSuperHeroParNom");
         List<SuperHero> lesSuperHeroTrouves = new ArrayList<>();
         PreparedStatement preparedStatement = null;
@@ -107,8 +123,8 @@ public class DaoSuperHeroImpl implements IDaoSuperHero {
             connection.setAutoCommit(false);
             preparedStatement = connection.prepareStatement(REQUETE_GET_ALL_SUPER_HERO);
             preparedStatement.setString(
-                    ParametreRequete.PREMIER_PARAMETRE_REQUETE.getNumeroParametre(), "%" + paramNom
-                            + "%");
+                    ParametreRequete.PREMIER_PARAMETRE_REQUETE.getNumeroParametre(), "%"
+                            + paramSuperNom + "%");
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 final SuperHero superHero = hydrateSuperHero(resultSet);
@@ -145,10 +161,10 @@ public class DaoSuperHeroImpl implements IDaoSuperHero {
      */
     private SuperHero hydrateSuperHero(final ResultSet paramResultSet) throws SQLException {
         final SuperHero superHero = new SuperHero();
-        superHero.setIdSuperHero(paramResultSet.getInt("id_super_hero"));
-        superHero.setNom(paramResultSet.getString("nom"));
-        superHero.setPrenom(paramResultSet.getString("prenom"));
-        superHero.setSuperNom(paramResultSet.getString("super_nom"));
+        superHero.setIdSuperHero(paramResultSet.getInt(COLONE_ID_SUPER_HERO));
+        superHero.setNom(paramResultSet.getString(COLONE_NOM_SUPER_HERO));
+        superHero.setPrenom(paramResultSet.getString(COLONE_PRENOM_SUPER_HERO));
+        superHero.setSuperNom(paramResultSet.getString(COLONE_SUPER_NOM_SUPER_HERO));
         return superHero;
     }
 
