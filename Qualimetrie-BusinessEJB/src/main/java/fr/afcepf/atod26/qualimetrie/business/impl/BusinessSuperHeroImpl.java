@@ -13,6 +13,7 @@ import fr.afcepf.atod26.qualimetrie.business.IBusinessSuperHero;
 import fr.afcepf.atod26.qualimetrie.data.IDaoSuperHero;
 import fr.afcepf.atod26.qualimetrie.entity.SuperHero;
 import fr.afcepf.atod26.qualimetrie.exception.SuperHeroException;
+import fr.afcepf.atod26.qualimetrie.exception.SuperHeroException.SuperErrorCode;
 
 /**
  * L'implémentation du business.
@@ -35,6 +36,14 @@ public class BusinessSuperHeroImpl implements IBusinessSuperHero {
      */
     @Override
     public SuperHero ajouterSuperHero(final SuperHero paramSuperHero) throws SuperHeroException {
+        final List<SuperHero> lesSuperHero = daoSuperHero
+                .rechercherSuperHeroParSuperNom(paramSuperHero.getSuperNom());
+        for (SuperHero localSuperHero : lesSuperHero) {
+            if (localSuperHero.getSuperNom().equals(paramSuperHero.getSuperNom())) {
+                throw new SuperHeroException("Ce super héros existe déjà",
+                        SuperErrorCode.NOM_EXISTE_DEJA);
+            }
+        }
         return daoSuperHero.ajouterSuperHero(paramSuperHero);
     }
 
@@ -52,6 +61,14 @@ public class BusinessSuperHeroImpl implements IBusinessSuperHero {
     @Override
     public List<SuperHero> rechercherSuperHeroParNom(final String paramNom) {
         return daoSuperHero.rechercherSuperHeroParSuperNom(paramNom);
+    }
+
+    /**
+     * Accesseur en écriture du champ <code>daoSuperHero</code>.
+     * @param paramDaoSuperHero la valeur à écrire dans <code>daoSuperHero</code>.
+     */
+    public void setDaoSuperHero(IDaoSuperHero paramDaoSuperHero) {
+        daoSuperHero = paramDaoSuperHero;
     }
 
 }

@@ -26,7 +26,19 @@ Les SFD (usecase) fournissent les différents cas à tester :
 
 La couverture idéale doit être de 80%.
 
-##Procédure de TDD
+##Procédure de TDD pour un dao
 
 1. Ecriture des tests
 2. Vérification de non succès
+3. Implémentation
+4. Vérification de succès
+
+##Procédure de TDD pour le business
+
+1. Ecriture des tests
+2. Vérification de non succès
+3. Test des tests
+3. Implémentation
+4. Retirer le mock
+5. Réaliser un mock des dépendances
+4. Vérification de succès
