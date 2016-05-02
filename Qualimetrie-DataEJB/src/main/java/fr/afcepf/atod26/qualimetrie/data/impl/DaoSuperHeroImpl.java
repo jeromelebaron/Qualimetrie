@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +20,8 @@ import fr.afcepf.atod26.qualimetrie.commun.ParametreRequete;
 import fr.afcepf.atod26.qualimetrie.data.IDaoSuperHero;
 import fr.afcepf.atod26.qualimetrie.data.utils.DataSourceSuperHero;
 import fr.afcepf.atod26.qualimetrie.entity.SuperHero;
+import fr.afcepf.atod26.qualimetrie.exception.SuperHeroException;
+import fr.afcepf.atod26.qualimetrie.exception.SuperHeroException.SuperErrorCode;
 
 /**
  * L'implémentation du dao du {@link SuperHero}.
@@ -57,14 +60,14 @@ public class DaoSuperHeroImpl implements IDaoSuperHero {
      * {@inheritDoc}
      */
     @Override
-    public SuperHero ajouterSuperHero(final SuperHero paramSuperHero) {
+    public SuperHero ajouterSuperHero(final SuperHero paramSuperHero) throws SuperHeroException {
         logger.info("Méthode ajouterSuperHero");
         PreparedStatement preparedStatement = null;
         try {
             connection = dataSourceSuperHero.getConnection();
             connection.setAutoCommit(false);
             preparedStatement = connection.prepareStatement(REQUETE_INSERT_SUPER_HERO,
-                    PreparedStatement.RETURN_GENERATED_KEYS);
+                    Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(
                     ParametreRequete.PREMIER_PARAMETRE_REQUETE.getNumeroParametre(),
                     paramSuperHero.getNom());
@@ -77,12 +80,14 @@ public class DaoSuperHeroImpl implements IDaoSuperHero {
             final int nbLignesModifiees = preparedStatement.executeUpdate();
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
             if (nbLignesModifiees == 1 && resultSet.next()) {
-                paramSuperHero.setIdSuperHero(resultSet.getInt(1));
+                paramSuperHero.setIdSuperHero(resultSet.getInt(ParametreRequete.INDEX_ID_GENERE
+                        .getNumeroParametre()));
             }
             connection.commit();
         } catch (SQLException e) {
             logger.error("Erreur avec la base de données");
             logger.error(e);
+            throw new SuperHeroException(e.getMessage(), SuperErrorCode.ERREUR_AJOUT_SUPER_HEROS);
         } finally {
             fermerElements(preparedStatement);
         }
@@ -93,7 +98,7 @@ public class DaoSuperHeroImpl implements IDaoSuperHero {
      * {@inheritDoc}
      */
     @Override
-    public List<SuperHero> rechercherSuperHeroParNom(final String paramNom) {
+    public List<SuperHero> rechercherSuperHeroParSuperNom(final String paramNom) {
         logger.info("Méthode rechercherSuperHeroParNom");
         List<SuperHero> lesSuperHeroTrouves = new ArrayList<>();
         PreparedStatement preparedStatement = null;
@@ -101,7 +106,9 @@ public class DaoSuperHeroImpl implements IDaoSuperHero {
             connection = dataSourceSuperHero.getConnection();
             connection.setAutoCommit(false);
             preparedStatement = connection.prepareStatement(REQUETE_GET_ALL_SUPER_HERO);
-            preparedStatement.setString(1, "%" + paramNom + "%");
+            preparedStatement.setString(
+                    ParametreRequete.PREMIER_PARAMETRE_REQUETE.getNumeroParametre(), "%" + paramNom
+                            + "%");
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 final SuperHero superHero = hydrateSuperHero(resultSet);

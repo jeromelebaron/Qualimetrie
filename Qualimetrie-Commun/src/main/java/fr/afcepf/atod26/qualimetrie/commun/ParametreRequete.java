@@ -4,6 +4,7 @@
 package fr.afcepf.atod26.qualimetrie.commun;
 
 /**
+ * Pour tous les éléments communs aux différentes requêtes de l'application.
  * @author Jérome LE BARON
  * @author $LastChangedBy$
  * @version $Revision$ $Date$
@@ -21,16 +22,20 @@ public enum ParametreRequete {
     /**
      * Troisième paramètre d'une requête.
      */
-    TROISIEME_PARAMETRE_REQUETE(3);
+    TROISIEME_PARAMETRE_REQUETE(3),
+    /**
+     * Numéro de la colonne de l'id généré après insertion.
+     */
+    INDEX_ID_GENERE(1);
 
     /**
-     * Le numéro du paramètre d'une requete.
+     * Le numéro du utile pour une requete.
      */
     private int numeroParametre;
 
     /**
-     * Constructeur.
-     * @param paramNumeroParametre le numéro du paramètre.
+     * Constructeur plein.
+     * @param paramNumeroParametre le numéro utile.
      */
     ParametreRequete(int paramNumeroParametre) {
         numeroParametre = paramNumeroParametre;

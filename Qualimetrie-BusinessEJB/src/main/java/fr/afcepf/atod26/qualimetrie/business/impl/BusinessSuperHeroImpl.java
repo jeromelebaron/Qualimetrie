@@ -12,6 +12,7 @@ import javax.ejb.Stateless;
 import fr.afcepf.atod26.qualimetrie.business.IBusinessSuperHero;
 import fr.afcepf.atod26.qualimetrie.data.IDaoSuperHero;
 import fr.afcepf.atod26.qualimetrie.entity.SuperHero;
+import fr.afcepf.atod26.qualimetrie.exception.SuperHeroException;
 
 /**
  * L'implémentation du business.
@@ -33,7 +34,7 @@ public class BusinessSuperHeroImpl implements IBusinessSuperHero {
      * {@inheritDoc}
      */
     @Override
-    public SuperHero ajouterSuperHero(final SuperHero paramSuperHero) {
+    public SuperHero ajouterSuperHero(final SuperHero paramSuperHero) throws SuperHeroException {
         return daoSuperHero.ajouterSuperHero(paramSuperHero);
     }
 
@@ -42,7 +43,7 @@ public class BusinessSuperHeroImpl implements IBusinessSuperHero {
      */
     @Override
     public List<SuperHero> recupererTousLesSuperHero() {
-        return daoSuperHero.rechercherSuperHeroParNom("");
+        return daoSuperHero.rechercherSuperHeroParSuperNom("");
     }
 
     /**
@@ -50,7 +51,7 @@ public class BusinessSuperHeroImpl implements IBusinessSuperHero {
      */
     @Override
     public List<SuperHero> rechercherSuperHeroParNom(final String paramNom) {
-        return daoSuperHero.rechercherSuperHeroParNom(paramNom);
+        return daoSuperHero.rechercherSuperHeroParSuperNom(paramNom);
     }
 
 }
