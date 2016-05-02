@@ -3,6 +3,8 @@
  */
 package fr.afcepf.atod26.qualimetrie.data.dao.test;
 
+import java.io.IOException;
+
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Before;
@@ -28,7 +30,7 @@ public class DaoSuperHeroImplTest {
     /**
      * L'instance pour les tests.
      */
-    private IDaoSuperHero daoSuperHero = null;
+    private IDaoSuperHero daoSuperHero = new DaoSuperHeroImpl();
     /**
      * Le {@link SuperHero} pour le cas nominal.
      */
@@ -56,8 +58,17 @@ public class DaoSuperHeroImplTest {
      * Pour charger l'instance du dao.
      */
     @Before
-    public void init() {
-        daoSuperHero = new DaoSuperHeroImpl();
+    public void setUp() {
+        try {
+            String path = Thread.currentThread().getContextClassLoader()
+                    .getResource("creabase.bat").getPath();
+            Process process = Runtime.getRuntime().exec(path);
+            process.waitFor();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -75,7 +86,7 @@ public class DaoSuperHeroImplTest {
             Assert.assertNull(superHeroRetour.getLesCostumes());
             Assert.assertNull(superHeroRetour.getLesPouvoirs());
             Assert.assertEquals("Vérification de l'insertion d'un super héros",
-                    superHeroRetour.getIdSuperHero(), superHeroNominalRetour.getIdSuperHero());
+                    superHeroNominalRetour.getIdSuperHero(), superHeroRetour.getIdSuperHero());
             Assert.assertEquals("Vérification de la non altération du nom",
                     superHeroNominalRetour.getNom(), superHeroRetour.getNom());
             Assert.assertEquals("Vérification de la non altération du prénom",

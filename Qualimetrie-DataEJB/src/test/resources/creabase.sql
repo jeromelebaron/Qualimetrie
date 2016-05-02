@@ -79,7 +79,7 @@ CREATE TABLE `super_hero` (
   `prenom` varchar(45) NOT NULL,
   `super_nom` varchar(45) NOT NULL,
   PRIMARY KEY (`id_super_hero`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `super_hero`
