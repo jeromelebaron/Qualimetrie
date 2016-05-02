@@ -98,7 +98,7 @@ public class DaoSuperHeroImpl implements IDaoSuperHero {
      * {@inheritDoc}
      */
     @Override
-    public List<SuperHero> rechercherSuperHeroParNom(final String paramNom) {
+    public List<SuperHero> rechercherSuperHeroParSuperNom(final String paramNom) {
         logger.info("Méthode rechercherSuperHeroParNom");
         List<SuperHero> lesSuperHeroTrouves = new ArrayList<>();
         PreparedStatement preparedStatement = null;

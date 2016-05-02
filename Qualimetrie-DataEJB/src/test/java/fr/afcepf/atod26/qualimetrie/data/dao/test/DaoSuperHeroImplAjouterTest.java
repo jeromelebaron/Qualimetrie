@@ -21,7 +21,7 @@ import fr.afcepf.atod26.qualimetrie.exception.SuperHeroException;
  * @author $LastChangedBy$
  * @version $Revision$ $Date$
  */
-public class DaoSuperHeroImplTest {
+public class DaoSuperHeroImplAjouterTest {
 
     /**
      * L'id généré après insertion du {@link SuperHero} dans la bdd.
@@ -55,7 +55,7 @@ public class DaoSuperHeroImplTest {
     private final Logger logger = Logger.getLogger(getClass());
 
     /**
-     * Pour charger l'instance du dao.
+     * Pour remettre à zéro la bdd.
      */
     @Before
     public void setUp() {

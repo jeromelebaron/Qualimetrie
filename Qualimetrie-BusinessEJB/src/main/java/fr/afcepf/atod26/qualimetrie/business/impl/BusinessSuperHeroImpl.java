@@ -43,7 +43,7 @@ public class BusinessSuperHeroImpl implements IBusinessSuperHero {
      */
     @Override
     public List<SuperHero> recupererTousLesSuperHero() {
-        return daoSuperHero.rechercherSuperHeroParNom("");
+        return daoSuperHero.rechercherSuperHeroParSuperNom("");
     }
 
     /**
@@ -51,7 +51,7 @@ public class BusinessSuperHeroImpl implements IBusinessSuperHero {
      */
     @Override
     public List<SuperHero> rechercherSuperHeroParNom(final String paramNom) {
-        return daoSuperHero.rechercherSuperHeroParNom(paramNom);
+        return daoSuperHero.rechercherSuperHeroParSuperNom(paramNom);
     }
 
 }

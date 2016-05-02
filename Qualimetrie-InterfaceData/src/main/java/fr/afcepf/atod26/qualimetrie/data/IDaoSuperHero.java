@@ -26,9 +26,9 @@ public interface IDaoSuperHero {
 
     /**
      * Pour rechercher un {@link SuperHero} avec son nom.
-     * @param paramNom le superNom du {@link SuperHero}.
+     * @param paramSuperNom le superNom du {@link SuperHero}.
      * @return une liste de {@link SuperHero}.
      */
-    List<SuperHero> rechercherSuperHeroParNom(String paramNom);
+    List<SuperHero> rechercherSuperHeroParSuperNom(String paramSuperNom);
 
 }
