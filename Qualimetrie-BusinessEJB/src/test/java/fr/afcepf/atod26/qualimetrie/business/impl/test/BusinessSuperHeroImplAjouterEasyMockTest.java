@@ -3,8 +3,8 @@
  */
 package fr.afcepf.atod26.qualimetrie.business.impl.test;
 
-import java.util.List;
-
+import org.easymock.EasyMock;
+import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -15,12 +15,12 @@ import fr.afcepf.atod26.qualimetrie.exception.SuperHeroException;
 import fr.afcepf.atod26.qualimetrie.exception.SuperHeroException.SuperErrorCode;
 
 /**
- * Pour les tests d'ajout du business.
+ * Pour les tests d'ajout du business avec un framework de mock.
  * @author Jérome LE BARON
  * @author $LastChangedBy$
  * @version $Revision$ $Date$
  */
-public class BusinessSuperHeroImplAjouterTest {
+public class BusinessSuperHeroImplAjouterEasyMockTest {
 
     /**
      * L'instance à tester.
@@ -50,32 +50,22 @@ public class BusinessSuperHeroImplAjouterTest {
 
     /**
      * Avant tous les tests.
+     * @throws SuperHeroException levée en cas d'erreur.
      */
     @BeforeClass
-    public static void initAllTests() {
-        businessSuperHero = new IBusinessSuperHero() {
-
-            @Override
-            public List<SuperHero> recupererTousLesSuperHero() {
-                return null;
-            }
-
-            @Override
-            public List<SuperHero> rechercherSuperHeroParNom(String paramNom) {
-                return null;
-            }
-
-            @Override
-            public SuperHero ajouterSuperHero(SuperHero paramSuperHero) throws SuperHeroException {
-                if (paramSuperHero.getNom() == null) {
-                    throw new SuperHeroException("", SuperErrorCode.ERREUR_AJOUT_SUPER_HEROS);
-                }
-                if ("Batman".equals(paramSuperHero.getSuperNom())) {
-                    throw new SuperHeroException("", SuperErrorCode.NOM_EXISTE_DEJA);
-                }
-                return superHeroNominalRetour;
-            }
-        };
+    public static void initAllTests() throws SuperHeroException {
+        businessSuperHero = EasyMock.createMock(IBusinessSuperHero.class);
+        EasyMock.expect(businessSuperHero.ajouterSuperHero(superHeroNominal)).andReturn(
+                superHeroNominalRetour);
+        SuperHeroException superHeroExceptionExisteDeja = new SuperHeroException("",
+                SuperErrorCode.NOM_EXISTE_DEJA);
+        EasyMock.expect(businessSuperHero.ajouterSuperHero(superHeroExiste)).andThrow(
+                superHeroExceptionExisteDeja);
+        SuperHeroException superHeroExceptionParamNull = new SuperHeroException("",
+                SuperErrorCode.ERREUR_AJOUT_SUPER_HEROS);
+        EasyMock.expect(businessSuperHero.ajouterSuperHero(superHeroParamNull)).andThrow(
+                superHeroExceptionParamNull);
+        EasyMock.replay(businessSuperHero);
     }
 
     /**
@@ -123,6 +113,14 @@ public class BusinessSuperHeroImplAjouterTest {
         } catch (SuperHeroException e) {
             Assert.assertEquals(SuperErrorCode.ERREUR_AJOUT_SUPER_HEROS, e.getSuperErrorCode());
         }
+    }
+
+    /**
+     * Pour vérifier que nous bien passés dans toutes les méthodes attendues du mock.
+     */
+    @AfterClass
+    public static void closeTests() {
+        EasyMock.verify(businessSuperHero);
     }
 
 }
