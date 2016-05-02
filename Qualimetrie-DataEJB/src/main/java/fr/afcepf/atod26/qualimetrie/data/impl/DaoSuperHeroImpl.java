@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -66,7 +67,7 @@ public class DaoSuperHeroImpl implements IDaoSuperHero {
             connection = dataSourceSuperHero.getConnection();
             connection.setAutoCommit(false);
             preparedStatement = connection.prepareStatement(REQUETE_INSERT_SUPER_HERO,
-                    PreparedStatement.RETURN_GENERATED_KEYS);
+                    Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(
                     ParametreRequete.PREMIER_PARAMETRE_REQUETE.getNumeroParametre(),
                     paramSuperHero.getNom());
@@ -79,7 +80,8 @@ public class DaoSuperHeroImpl implements IDaoSuperHero {
             final int nbLignesModifiees = preparedStatement.executeUpdate();
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
             if (nbLignesModifiees == 1 && resultSet.next()) {
-                paramSuperHero.setIdSuperHero(resultSet.getInt(1));
+                paramSuperHero.setIdSuperHero(resultSet.getInt(ParametreRequete.INDEX_ID_GENERE
+                        .getNumeroParametre()));
             }
             connection.commit();
         } catch (SQLException e) {
@@ -104,7 +106,9 @@ public class DaoSuperHeroImpl implements IDaoSuperHero {
             connection = dataSourceSuperHero.getConnection();
             connection.setAutoCommit(false);
             preparedStatement = connection.prepareStatement(REQUETE_GET_ALL_SUPER_HERO);
-            preparedStatement.setString(1, "%" + paramNom + "%");
+            preparedStatement.setString(
+                    ParametreRequete.PREMIER_PARAMETRE_REQUETE.getNumeroParametre(), "%" + paramNom
+                            + "%");
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 final SuperHero superHero = hydrateSuperHero(resultSet);

@@ -24,7 +24,7 @@ public class DaoSuperHeroImplTest {
     /**
      * L'id généré après insertion du {@link SuperHero} dans la bdd.
      */
-    private final int dernierId = 14;
+    private final int dernierId = 5;
     /**
      * L'instance pour les tests.
      */
