@@ -6,6 +6,7 @@ package fr.afcepf.atod26.qualimetrie.business;
 import java.util.List;
 
 import fr.afcepf.atod26.qualimetrie.entity.SuperHero;
+import fr.afcepf.atod26.qualimetrie.exception.SuperHeroException;
 
 /**
  * Pour toutes les règles métier du {@link SuperHero}.
@@ -19,8 +20,9 @@ public interface IBusinessSuperHero {
      * Pour ajouter un {@link SuperHero}.
      * @param paramSuperHero le {@link SuperHero} à ajouter.
      * @return un {@link SuperHero} avec son id.
+     * @throws SuperHeroException au cas ou le nom existe déjà.
      */
-    SuperHero ajouterSuperHero(SuperHero paramSuperHero);
+    SuperHero ajouterSuperHero(SuperHero paramSuperHero) throws SuperHeroException;
 
     /**
      * Pour récupérer tous les {@link SuperHero}.

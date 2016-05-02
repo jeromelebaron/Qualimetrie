@@ -19,6 +19,7 @@ import fr.afcepf.atod26.qualimetrie.commun.ParametreRequete;
 import fr.afcepf.atod26.qualimetrie.data.IDaoSuperHero;
 import fr.afcepf.atod26.qualimetrie.data.utils.DataSourceSuperHero;
 import fr.afcepf.atod26.qualimetrie.entity.SuperHero;
+import fr.afcepf.atod26.qualimetrie.exception.SuperHeroException;
 
 /**
  * L'implémentation du dao du {@link SuperHero}.
@@ -57,7 +58,7 @@ public class DaoSuperHeroImpl implements IDaoSuperHero {
      * {@inheritDoc}
      */
     @Override
-    public SuperHero ajouterSuperHero(final SuperHero paramSuperHero) {
+    public SuperHero ajouterSuperHero(final SuperHero paramSuperHero) throws SuperHeroException {
         logger.info("Méthode ajouterSuperHero");
         PreparedStatement preparedStatement = null;
         try {

@@ -13,6 +13,7 @@ import org.junit.Test;
 import fr.afcepf.atod26.qualimetrie.data.IDaoSuperHero;
 import fr.afcepf.atod26.qualimetrie.data.impl.DaoSuperHeroImpl;
 import fr.afcepf.atod26.qualimetrie.entity.SuperHero;
+import fr.afcepf.atod26.qualimetrie.exception.SuperHeroException;
 
 /**
  * Les tests de la classe.
@@ -51,9 +52,15 @@ public class DaoSuperHeroImplTest {
     public void testAjouterSuperHero() {
         SuperHero superHero = new SuperHero("Kent", "Clark", "SuperMan");
 
-        int idGenere = daoSuperHero.ajouterSuperHero(superHero).getIdSuperHero();
-        int idAttendu = 1;
-        Assert.assertEquals("Vérification de l'insertion d'un super héros", idAttendu, idGenere);
+        int idGenere;
+        try {
+            idGenere = daoSuperHero.ajouterSuperHero(superHero).getIdSuperHero();
+            int idAttendu = 1;
+            Assert.assertEquals("Vérification de l'insertion d'un super héros", idAttendu, idGenere);
+        } catch (SuperHeroException e) {
+            e.printStackTrace();
+        }
+
     }
 
     /**
