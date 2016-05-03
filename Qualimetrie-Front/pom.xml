@@ -14,12 +14,10 @@
 		<dependency>
 			<groupId>fr.afcepf.atod26</groupId>
 			<artifactId>Qualimetrie-Entity</artifactId>
-			<version>${parent.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>fr.afcepf.atod26</groupId>
 			<artifactId>Qualimetrie-InterfaceBusiness</artifactId>
-			<version>${parent.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>log4j</groupId>
@@ -30,4 +28,5 @@
 			<artifactId>javaee-api</artifactId>
 		</dependency>
 	</dependencies>
+	<name>Front</name>
 </project>

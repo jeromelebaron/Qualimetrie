@@ -19,18 +19,22 @@
 			<dependency>
 				<groupId>fr.afcepf.atod26</groupId>
 				<artifactId>Qualimetrie-Commun</artifactId>
+				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>fr.afcepf.atod26</groupId>
 				<artifactId>Qualimetrie-Entity</artifactId>
+				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>fr.afcepf.atod26</groupId>
 				<artifactId>Qualimetrie-InterfaceData</artifactId>
+				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>fr.afcepf.atod26</groupId>
 				<artifactId>Qualimetrie-InterfaceBusiness</artifactId>
+				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>log4j</groupId>
@@ -84,6 +88,13 @@
 	</profiles>
 
 	<build>
+		<extensions>
+			<extension>
+				<groupId>fr.afcepf.atod26</groupId>
+				<artifactId>Qualimetrie-CheckStyle</artifactId>
+				<version>${project.version}</version>
+			</extension>
+		</extensions>
 		<filters>
 			<filter>../src/filters/filter-${env}.properties</filter>
 		</filters>
@@ -105,7 +116,72 @@
 					<target>${java.version}</target>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>2.2.1</version>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<phase>package</phase>
+						<goals>
+							<goal>jar-no-fork</goal>
+						</goals>
+						<inherited>false</inherited>
+						<configuration>
+						</configuration>
+					</execution>
+					<execution>
+						<id>attach-test-sources</id>
+						<phase>package</phase>
+						<goals>
+							<goal>test-jar-no-fork</goal>
+						</goals>
+						<inherited>false</inherited>
+						<configuration>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.9.1</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-report-plugin</artifactId>
+				<version>2.18.1</version>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>javancss-maven-plugin</artifactId>
+				<version>2.1</version>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>cobertura-maven-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<format>xml</format>
+					<format>html</format>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>2.17</version>
+				<configuration>
+					<configLocation>checkstyle.xml</configLocation>
+				</configuration>
+			</plugin>
+		</plugins>
+	</reporting>
+
+	<name>Parent</name>
 </project>

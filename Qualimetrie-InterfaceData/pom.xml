@@ -5,6 +5,7 @@
 		<groupId>fr.afcepf.atod26</groupId>
 		<artifactId>Qualimetrie-Parent</artifactId>
 		<version>0.1</version>
+		<relativePath>../Qualimetrie-Parent/pom.xml</relativePath>
 	</parent>
 	<artifactId>Qualimetrie-InterfaceData</artifactId>
 
@@ -12,8 +13,8 @@
 		<dependency>
 			<groupId>fr.afcepf.atod26</groupId>
 			<artifactId>Qualimetrie-Entity</artifactId>
-			<version>${parent.version}</version>
 		</dependency>
 	</dependencies>
 
+	<name>Data Interfaces</name>
 </project>

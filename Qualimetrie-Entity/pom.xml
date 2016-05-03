@@ -8,4 +8,5 @@
 		<relativePath>../Qualimetrie-Parent/pom.xml</relativePath>
 	</parent>
 	<artifactId>Qualimetrie-Entity</artifactId>
+	<name>Entité</name>
 </project>
