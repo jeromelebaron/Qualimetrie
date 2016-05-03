@@ -134,7 +134,7 @@ public class BusinessSuperHeroImplAjouterEasyMockDataTest {
     }
 
     /**
-     * Pour vérifier que nous bien passés dans toutes les méthodes attendues du mock.
+     * Pour vérifier que nous sommes bien passés dans toutes les méthodes attendues du mock.
      */
     @AfterClass
     public static void closeTests() {

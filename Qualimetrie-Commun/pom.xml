@@ -6,6 +6,7 @@
 		<groupId>fr.afcepf.atod26</groupId>
 		<artifactId>Qualimetrie-Parent</artifactId>
 		<version>0.1</version>
+		<relativePath>../Qualimetrie-Parent/pom.xml</relativePath>
 	</parent>
 
 </project>

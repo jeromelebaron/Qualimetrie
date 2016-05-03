@@ -19,18 +19,22 @@
 			<dependency>
 				<groupId>fr.afcepf.atod26</groupId>
 				<artifactId>Qualimetrie-Commun</artifactId>
+				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>fr.afcepf.atod26</groupId>
 				<artifactId>Qualimetrie-Entity</artifactId>
+				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>fr.afcepf.atod26</groupId>
 				<artifactId>Qualimetrie-InterfaceData</artifactId>
+				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>fr.afcepf.atod26</groupId>
 				<artifactId>Qualimetrie-InterfaceBusiness</artifactId>
+				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>log4j</groupId>
@@ -107,5 +111,15 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.9.1</version>
+			</plugin>
+		</plugins>
+	</reporting>
 
 </project>
