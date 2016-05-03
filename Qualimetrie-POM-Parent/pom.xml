@@ -15,11 +15,6 @@
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
-				<groupId>fr.afcepf.atod26</groupId>
-				<artifactId>Qualimetrie-POM-Jar</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
 				<groupId>javax</groupId>
 				<artifactId>javaee-api</artifactId>
 				<version>${javaee.version}</version>
@@ -65,6 +60,8 @@
 	<modules>
 		<module>Qualimetrie-POM-Jar</module>
 		<module>Qualimetrie-POM-EJB</module>
+		<module>Qualimetrie-POM-War</module>
+		<module>Qualimetrie-POM-EAR</module>
 	</modules>
-	
+
 </project>
