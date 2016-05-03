@@ -9,4 +9,5 @@
 		<relativePath>../Qualimetrie-Parent/pom.xml</relativePath>
 	</parent>
 
+	<name>Commun</name>
 </project>

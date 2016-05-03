@@ -13,8 +13,8 @@
 		<dependency>
 			<groupId>fr.afcepf.atod26</groupId>
 			<artifactId>Qualimetrie-Entity</artifactId>
-			<version>${project.parent.version}</version>
 		</dependency>
 	</dependencies>
 
+	<name>Data Interfaces</name>
 </project>

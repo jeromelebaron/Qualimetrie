@@ -22,4 +22,5 @@
 		<module>Qualimetrie-Front</module>
 	</modules>
 
+	<name>Reactor</name>
 </project>

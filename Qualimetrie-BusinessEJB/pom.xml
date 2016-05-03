@@ -22,12 +22,10 @@
 		<dependency>
 			<groupId>fr.afcepf.atod26</groupId>
 			<artifactId>Qualimetrie-InterfaceBusiness</artifactId>
-			<version>${parent.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>fr.afcepf.atod26</groupId>
 			<artifactId>Qualimetrie-InterfaceData</artifactId>
-			<version>${parent.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
@@ -52,4 +50,5 @@
 		</plugins>
 	</build>
 
+	<name>Business</name>
 </project>
