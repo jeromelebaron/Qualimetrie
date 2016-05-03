@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>Le lancer de dé !</h:head>
+<body>
+
+	<h:form>
+		<label>Nombre de faces : </label>
+		<h:inputText value="#{managedBeanDe.nbFace}" />
+		<h:commandButton value="Lancer" action="#{managedBeanDe.lancer()}" />
+		<br />
+		<span>Réultats : </span>
+		<h:outputLabel value="#{managedBeanDe.resultat}" />
+	</h:form>
+
+</body>
+</html>
