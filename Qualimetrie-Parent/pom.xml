@@ -88,6 +88,13 @@
 	</profiles>
 
 	<build>
+		<extensions>
+			<extension>
+				<groupId>fr.afcepf.atod26</groupId>
+				<artifactId>Qualimetrie-CheckStyle</artifactId>
+				<version>${project.version}</version>
+			</extension>
+		</extensions>
 		<filters>
 			<filter>../src/filters/filter-${env}.properties</filter>
 		</filters>
@@ -108,6 +115,33 @@
 					</source>
 					<target>${java.version}</target>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>2.2.1</version>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<phase>package</phase>
+						<goals>
+							<goal>jar-no-fork</goal>
+						</goals>
+						<inherited>false</inherited>
+						<configuration>
+						</configuration>
+					</execution>
+					<execution>
+						<id>attach-test-sources</id>
+						<phase>package</phase>
+						<goals>
+							<goal>test-jar-no-fork</goal>
+						</goals>
+						<inherited>false</inherited>
+						<configuration>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
@@ -142,6 +176,9 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-checkstyle-plugin</artifactId>
 				<version>2.17</version>
+				<configuration>
+					<configLocation>checkstyle.xml</configLocation>
+				</configuration>
 			</plugin>
 		</plugins>
 	</reporting>

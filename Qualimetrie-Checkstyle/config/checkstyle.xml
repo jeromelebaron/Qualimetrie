@@ -5,9 +5,8 @@
     This configuration file was written by the eclipse-cs plugin configuration editor
 -->
 <!--
-    Checkstyle-Configuration: Afcepf Checks
-    Description: 
-Checkstyle configuration that checks the sun coding conventions.
+    Checkstyle-Configuration: AFCPEF
+    Description: none
 -->
 <module name="Checker">
   <property name="severity" value="warning"/>
@@ -30,7 +29,9 @@ Checkstyle configuration that checks the sun coding conventions.
     <module name="IllegalImport"/>
     <module name="RedundantImport"/>
     <module name="UnusedImports"/>
-    <module name="LineLength"/>
+    <module name="LineLength">
+      <property name="max" value="110"/>
+    </module>
     <module name="MethodLength"/>
     <module name="ParameterNumber"/>
     <module name="EmptyForIteratorPad"/>
