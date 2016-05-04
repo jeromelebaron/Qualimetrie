@@ -1,5 +1,6 @@
 package fr.afcepf.atod26.qualimetrie.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -18,26 +19,33 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "super_hero")
-public class SuperHero {
+public class SuperHero implements Serializable {
 
+    /**
+     * Serialisation.
+     */
+    private static final long serialVersionUID = 1L;
     /**
      * Identifiant unique.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_super_hero")
     private int idSuperHero;
     /**
      * Nom de famille.
      */
+    @Column(nullable = false)
     private String nom;
     /**
      * Prénom.
      */
+    @Column(nullable = false)
     private String prenom;
     /**
      * Nom de super héros.
      */
-    @Column(name = "super_nom", nullable = false)
+    @Column(name = "super_nom", nullable = false, length = 45)
     private String superNom;
     /**
      * Liste de {@link Pouvoir}.

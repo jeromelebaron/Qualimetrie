@@ -5,4 +5,4 @@ INSERT INTO `super_hero` (`id_super_hero`,`nom`,`prenom`,`super_nom`) VALUES (4,
 
 INSERT INTO `costume` (`id_costume`,`couleur`,`is_moulant`,`nom`,`id_super_hero`) VALUES (1, 'noire', false, 'BatCape', 2);
 INSERT INTO `costume` (`id_costume`,`couleur`,`is_moulant`,`nom`,`id_super_hero`) VALUES (2, 'rouge', true, 'SpiderCostume', 1);
-INSERT INTO `costume` (`id_costume`,`couleur`,`is_moulant`,`nom`,`id_super_hero`) VALUES (1, 'bleu' ,true, 'XTenue', 4);
+INSERT INTO `costume` (`id_costume`,`couleur`,`is_moulant`,`nom`,`id_super_hero`) VALUES (3, 'bleu', true, 'XTenue', 4);

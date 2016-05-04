@@ -1,5 +1,7 @@
 package fr.afcepf.atod26.qualimetrie.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,30 +19,33 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "costume")
-public class Costume {
+public class Costume implements Serializable {
 
+    /**
+     * Serialisation.
+     */
+    private static final long serialVersionUID = 1L;
     /**
      * Identifiant unique.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_costume")
     private Integer idCostume;
     /**
-     * Si le {@link SuperHero} a une cape.
+     * Couleur.
      */
-    private boolean isCape;
-    /**
-     * COuleur.
-     */
+    @Column(nullable = false)
     private String couleur;
     /**
      * Si le costume est moulant.
      */
-    @Column(name = "is_moulant")
+    @Column(name = "is_moulant", nullable = false)
     private boolean isMoulant;
     /**
      * Le nom.
      */
+    @Column(nullable = false)
     private String nom;
     /**
      * Le {@link SuperHero} à qui appartient le costume.
@@ -58,31 +63,31 @@ public class Costume {
 
     /**
      * Constructeur sans id.
-     * @param paramIsCape {@link #isCape()}
      * @param paramCouleur #{@link #couleur}
      * @param paramIsMoulant {@link #isMoulant}
      * @param paramNom {@link #nom}
+     * @param paramSuperHero {@link #superHero}
      */
-    public Costume(final boolean paramIsCape, final String paramCouleur,
-            final boolean paramIsMoulant, final String paramNom) {
+    public Costume(final String paramCouleur, final boolean paramIsMoulant, final String paramNom,
+            final SuperHero paramSuperHero) {
         super();
-        isCape = paramIsCape;
         couleur = paramCouleur;
         isMoulant = paramIsMoulant;
         nom = paramNom;
+        superHero = paramSuperHero;
     }
 
     /**
      * Constructeur plein.
      * @param paramIdCostume {@link #idCostume}
-     * @param paramIsCape {@link #isCape()}
      * @param paramCouleur #{@link #couleur}
      * @param paramIsMoulant {@link #isMoulant}
      * @param paramNom {@link #nom}
+     * @param paramSuperHero {@link #superHero}
      */
-    public Costume(final Integer paramIdCostume, final boolean paramIsCape,
-            final String paramCouleur, final boolean paramIsMoulant, final String paramNom) {
-        this(paramIsCape, paramCouleur, paramIsMoulant, paramNom);
+    public Costume(final Integer paramIdCostume, final String paramCouleur,
+            final boolean paramIsMoulant, final String paramNom, final SuperHero paramSuperHero) {
+        this(paramCouleur, paramIsMoulant, paramNom, paramSuperHero);
         idCostume = paramIdCostume;
     }
 
@@ -100,22 +105,6 @@ public class Costume {
      */
     public void setIdCostume(final Integer paramIdCostume) {
         idCostume = paramIdCostume;
-    }
-
-    /**
-     * Accesseur en lecture du champ <code>isCape</code>.
-     * @return le champ <code>isCape</code>.
-     */
-    public boolean isCape() {
-        return isCape;
-    }
-
-    /**
-     * Accesseur en écriture du champ <code>isCape</code>.
-     * @param paramIsCape la valeur à écrire dans <code>isCape</code>.
-     */
-    public void setCape(final boolean paramIsCape) {
-        isCape = paramIsCape;
     }
 
     /**

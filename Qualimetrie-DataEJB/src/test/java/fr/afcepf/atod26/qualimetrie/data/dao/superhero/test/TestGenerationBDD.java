@@ -1,7 +1,7 @@
 /*
  * Créé le 2 mai 2016 par Jérome LE BARON
  */
-package fr.afcepf.atod26.qualimetrie.data.dao.test;
+package fr.afcepf.atod26.qualimetrie.data.dao.superhero.test;
 
 import java.io.IOException;
 

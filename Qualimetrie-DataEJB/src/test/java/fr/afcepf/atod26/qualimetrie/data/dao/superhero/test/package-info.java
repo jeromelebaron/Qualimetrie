@@ -4,5 +4,5 @@
  * @author $LastChangedBy$
  * @version $Revision$ $Date$
  */
-package fr.afcepf.atod26.qualimetrie.data.dao.test;
+package fr.afcepf.atod26.qualimetrie.data.dao.superhero.test;
 

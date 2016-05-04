@@ -33,7 +33,7 @@ public class DaoCostumeImpl implements IDaoCostume {
      * {@inheritDoc}
      */
     @Override
-    public Costume ajouterCostume(final Costume paramCostume) throws SuperHeroException {
+    public Costume ajouterCostume(Costume paramCostume) throws SuperHeroException {
         try {
             entityManager.persist(paramCostume);
             entityManager.flush();
