@@ -80,8 +80,8 @@ CREATE TABLE `pouvoir` (
 DROP TABLE IF EXISTS `super_hero`;
 CREATE TABLE `super_hero` (
   `id_super_hero` int(11) NOT NULL AUTO_INCREMENT,
-  `nom` varchar(255) NOT NULL,
-  `prenom` varchar(255) NOT NULL,
+  `nom` varchar(45) NOT NULL,
+  `prenom` varchar(45) NOT NULL,
   `super_nom` varchar(45) NOT NULL,
   PRIMARY KEY (`id_super_hero`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;

@@ -35,12 +35,12 @@ public class SuperHero implements Serializable {
     /**
      * Nom de famille.
      */
-    @Column(nullable = false)
+    @Column(nullable = false, length = 45)
     private String nom;
     /**
      * Prénom.
      */
-    @Column(nullable = false)
+    @Column(nullable = false, length = 45)
     private String prenom;
     /**
      * Nom de super héros.
