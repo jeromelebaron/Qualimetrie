@@ -1,16 +1,29 @@
 package fr.afcepf.atod26.qualimetrie.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 /**
  * POJO pour un costume d'un {@link SuperHero}.
  * @author Jérome LE BARON
  * @author $LastChangedBy$
  * @version $Revision$ $Date$
  */
+@Entity
+@Table(name = "costume")
 public class Costume {
 
     /**
      * Identifiant unique.
      */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idCostume;
     /**
      * Si le {@link SuperHero} a une cape.
@@ -23,11 +36,18 @@ public class Costume {
     /**
      * Si le costume est moulant.
      */
+    @Column(name = "is_moulant")
     private boolean isMoulant;
     /**
      * Le nom.
      */
     private String nom;
+    /**
+     * Le {@link SuperHero} à qui appartient le costume.
+     */
+    @ManyToOne
+    @JoinColumn(name = "id_super_hero")
+    private SuperHero superHero;
 
     /**
      * Constructeur vide.
@@ -61,8 +81,7 @@ public class Costume {
      * @param paramNom {@link #nom}
      */
     public Costume(final Integer paramIdCostume, final boolean paramIsCape,
-            final String paramCouleur, final boolean paramIsMoulant,
-            final String paramNom) {
+            final String paramCouleur, final boolean paramIsMoulant, final String paramNom) {
         this(paramIsCape, paramCouleur, paramIsMoulant, paramNom);
         idCostume = paramIdCostume;
     }
@@ -145,6 +164,22 @@ public class Costume {
      */
     public void setNom(final String paramNom) {
         nom = paramNom;
+    }
+
+    /**
+     * Accesseur en lecture du champ <code>superHero</code>.
+     * @return le champ <code>superHero</code>.
+     */
+    public SuperHero getSuperHero() {
+        return superHero;
+    }
+
+    /**
+     * Accesseur en écriture du champ <code>superHero</code>.
+     * @param paramSuperHero la valeur à écrire dans <code>superHero</code>.
+     */
+    public void setSuperHero(SuperHero paramSuperHero) {
+        superHero = paramSuperHero;
     }
 
 }

@@ -2,17 +2,29 @@ package fr.afcepf.atod26.qualimetrie.entity;
 
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
 /**
  * Pojo qui représente un {@link SuperHero}.
  * @author Jérome LE BARON
  * @author $LastChangedBy$
  * @version $Revision$ $Date$
  */
+@Entity
+@Table(name = "super_hero")
 public class SuperHero {
 
     /**
      * Identifiant unique.
      */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idSuperHero;
     /**
      * Nom de famille.
@@ -25,14 +37,17 @@ public class SuperHero {
     /**
      * Nom de super héros.
      */
+    @Column(name = "super_nom", nullable = false)
     private String superNom;
     /**
      * Liste de {@link Pouvoir}.
      */
+    @OneToMany(mappedBy = "superHero")
     private List<Pouvoir> lesPouvoirs;
     /**
      * Tous les {@link Costume} du héros.
      */
+    @OneToMany(mappedBy = "superHero")
     private List<Costume> lesCostumes;
 
     /**

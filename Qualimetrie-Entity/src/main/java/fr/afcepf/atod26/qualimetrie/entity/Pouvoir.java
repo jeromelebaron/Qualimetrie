@@ -1,16 +1,28 @@
 package fr.afcepf.atod26.qualimetrie.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 /**
  * POJO pour le pouvoir d'un {@link SuperHero}.
  * @author Jérome LE BARON
  * @author $LastChangedBy$
  * @version $Revision$ $Date$
  */
+@Entity
+@Table(name = "pouvoir")
 public class Pouvoir {
 
     /**
      * Identifiant unique.
      */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idPouvoir;
     /**
      * Le nom.
@@ -20,6 +32,12 @@ public class Pouvoir {
      * La puissance.
      */
     private int puissance;
+    /**
+     * Le {@link SuperHero} à qui appartient le pouvoir.
+     */
+    @ManyToOne
+    @JoinColumn(name = "id_super_hero")
+    private SuperHero superHero;
 
     /**
      * Constructeur vide.
@@ -45,8 +63,7 @@ public class Pouvoir {
      * @param paramNom {@link #nom}
      * @param paramPuissance {@link #puissance}
      */
-    public Pouvoir(final Integer paramIdPouvoir, final String paramNom,
-            final int paramPuissance) {
+    public Pouvoir(final Integer paramIdPouvoir, final String paramNom, final int paramPuissance) {
         this(paramNom, paramPuissance);
         idPouvoir = paramIdPouvoir;
     }
@@ -97,6 +114,22 @@ public class Pouvoir {
      */
     public void setPuissance(final int paramPuissance) {
         puissance = paramPuissance;
+    }
+
+    /**
+     * Accesseur en lecture du champ <code>superHero</code>.
+     * @return le champ <code>superHero</code>.
+     */
+    public SuperHero getSuperHero() {
+        return superHero;
+    }
+
+    /**
+     * Accesseur en écriture du champ <code>superHero</code>.
+     * @param paramSuperHero la valeur à écrire dans <code>superHero</code>.
+     */
+    public void setSuperHero(SuperHero paramSuperHero) {
+        superHero = paramSuperHero;
     }
 
 }

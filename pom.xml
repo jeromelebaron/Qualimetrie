@@ -21,7 +21,9 @@
 		<module>Qualimetrie-InterfaceBusiness</module>
 		<module>Qualimetrie-BusinessEJB</module>
 		<module>Qualimetrie-Front</module>
+		<module>Qualimetrie-EAR</module>
 	</modules>
 
 	<name>Reactor</name>
+	
 </project>
