@@ -1,7 +1,7 @@
 -- MySQL Administrator dump 1.4
 --
 -- ------------------------------------------------------
--- Server version	5.1.31-community
+-- Server version   5.1.31-community
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -27,21 +27,26 @@ USE super_hero;
 
 DROP TABLE IF EXISTS `costume`;
 CREATE TABLE `costume` (
-  `id_costume` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `couleur` varchar(45) NOT NULL,
+  `id_costume` int(11) NOT NULL AUTO_INCREMENT,
+  `couleur` varchar(255) NOT NULL,
   `is_moulant` tinyint(1) NOT NULL,
-  `nom` varchar(45) NOT NULL,
-  `id_super_hero` int(10) unsigned NOT NULL,
+  `nom` varchar(255) NOT NULL,
+  `id_super_hero` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_costume`),
-  KEY `FK_costume_super_hero` (`id_super_hero`),
-  CONSTRAINT `FK_costume_super_hero` FOREIGN KEY (`id_super_hero`) REFERENCES `super_hero` (`id_super_hero`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  KEY `FK38FDE5E0A9A495A1` (`id_super_hero`),
+  CONSTRAINT `FK38FDE5E0A9A495A1` FOREIGN KEY (`id_super_hero`) REFERENCES `super_hero` (`id_super_hero`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `costume`
 --
 
 /*!40000 ALTER TABLE `costume` DISABLE KEYS */;
+INSERT INTO `costume` (`id_costume`,`couleur`,`is_moulant`,`nom`,`id_super_hero`) VALUES 
+ (1,'noire',0,'BatCape',2),
+ (2,'rouge',1,'SpiderCostume',1),
+ (3,'bleu',1,'XTenue',4),
+ (4,'blanc',0,'Cape de Thor',3);
 /*!40000 ALTER TABLE `costume` ENABLE KEYS */;
 
 
@@ -51,13 +56,13 @@ CREATE TABLE `costume` (
 
 DROP TABLE IF EXISTS `pouvoir`;
 CREATE TABLE `pouvoir` (
-  `id_pouvoir` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `nom` varchar(45) NOT NULL,
-  `puissance` int(10) unsigned NOT NULL,
-  `id_super_hero` int(10) unsigned NOT NULL,
+  `id_pouvoir` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(255) NOT NULL,
+  `puissance` int(11) NOT NULL,
+  `id_super_hero` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_pouvoir`),
-  KEY `FK_pouvoir_super_hero` (`id_super_hero`),
-  CONSTRAINT `FK_pouvoir_super_hero` FOREIGN KEY (`id_super_hero`) REFERENCES `super_hero` (`id_super_hero`)
+  KEY `FKE8CBE8F8A9A495A1` (`id_super_hero`),
+  CONSTRAINT `FKE8CBE8F8A9A495A1` FOREIGN KEY (`id_super_hero`) REFERENCES `super_hero` (`id_super_hero`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -74,9 +79,9 @@ CREATE TABLE `pouvoir` (
 
 DROP TABLE IF EXISTS `super_hero`;
 CREATE TABLE `super_hero` (
-  `id_super_hero` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `nom` varchar(45) NOT NULL,
-  `prenom` varchar(45) NOT NULL,
+  `id_super_hero` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(255) NOT NULL,
+  `prenom` varchar(255) NOT NULL,
   `super_nom` varchar(45) NOT NULL,
   PRIMARY KEY (`id_super_hero`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
@@ -87,11 +92,10 @@ CREATE TABLE `super_hero` (
 
 /*!40000 ALTER TABLE `super_hero` DISABLE KEYS */;
 INSERT INTO `super_hero` (`id_super_hero`,`nom`,`prenom`,`super_nom`) VALUES 
- (1,'Parker', 'Peter', 'Spiderman'),
- (2,'Wayne', 'Bruce', 'Batman'),
- (3,'Odinson', 'Thor', 'Thor'),
- (4,'Howlett', 'James', 'Wolverine');
-
+ (1,'Parker','Peter','Spiderman'),
+ (2,'Wayne','Bruce','Batman'),
+ (3,'Odinson','Thor','Thor'),
+ (4,'Howlett','James','Wolverine');
 /*!40000 ALTER TABLE `super_hero` ENABLE KEYS */;
 
 

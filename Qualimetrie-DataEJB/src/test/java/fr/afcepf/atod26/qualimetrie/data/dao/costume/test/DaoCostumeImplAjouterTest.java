@@ -108,6 +108,5 @@ public class DaoCostumeImplAjouterTest {
             Assert.assertTrue("Exception levée, tout est ok", true);
             e.printStackTrace();
         }
-
     }
 }
