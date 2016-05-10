@@ -33,7 +33,7 @@ public class SuperHeroException extends Exception {
     }
 
     /**
-     * Code d'erreur de l'exception.
+     * Code d'erreur de l'exception. Par défaut, ça ne marche pas.
      */
     private SuperErrorCode superErrorCode = SuperErrorCode.CA_MARCHE_PAS;
 
