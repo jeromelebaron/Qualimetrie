@@ -4,7 +4,7 @@
         http://jboss.org/schema/arquillian/arquillian_1_0.xsd">
     <container qualifier="jbossas-7-managed" default="true" >
         <configuration>
-            <property name="jbossHome">C:/Users/Stagiaire/Documents/Jerome/Qualimetrie/Servers/jboss-as-7.1.1.Final-Arquilian</property>
+            <property name="jbossHome">${arquilian.path}</property>
         	<property name="allowConnectingToRunningServer">false</property>
         </configuration>
     </container>

@@ -16,6 +16,11 @@
 
 	<dependencyManagement>
 		<dependencies>
+		<dependency>
+				<groupId>fr.afcepf.atod26</groupId>
+				<artifactId>Qualimetrie-CheckStyle</artifactId>
+				<version>${project.version}</version>
+			</dependency>
 			<dependency>
 				<groupId>fr.afcepf.atod26</groupId>
 				<artifactId>Qualimetrie-Commun</artifactId>
@@ -92,7 +97,7 @@
 			<extension>
 				<groupId>fr.afcepf.atod26</groupId>
 				<artifactId>Qualimetrie-CheckStyle</artifactId>
-				<version>${project.version}</version>
+				<version>0.1</version>
 			</extension>
 		</extensions>
 		<filters>
@@ -101,6 +106,10 @@
 		<resources>
 			<resource>
 				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+			<resource>
+				<directory>src/test/resources</directory>
 				<filtering>true</filtering>
 			</resource>
 		</resources>
