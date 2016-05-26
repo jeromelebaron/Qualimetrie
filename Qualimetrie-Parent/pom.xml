@@ -16,7 +16,7 @@
 
 	<dependencyManagement>
 		<dependencies>
-		<dependency>
+			<dependency>
 				<groupId>fr.afcepf.atod26</groupId>
 				<artifactId>Qualimetrie-CheckStyle</artifactId>
 				<version>${project.version}</version>
@@ -108,11 +108,13 @@
 				<directory>src/main/resources</directory>
 				<filtering>true</filtering>
 			</resource>
-			<resource>
+		</resources>
+		<testResources>
+			<testResource>
 				<directory>src/test/resources</directory>
 				<filtering>true</filtering>
-			</resource>
-		</resources>
+			</testResource>
+		</testResources>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
